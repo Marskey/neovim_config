@@ -1,11 +1,12 @@
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
+  vim.notify("nvim-lspconfig not found!")
 	return
 end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua" }
+local servers = { "jsonls", "sumneko_lua", "clangd" }
 
 lsp_installer.setup({
 	ensure_installed = servers,
