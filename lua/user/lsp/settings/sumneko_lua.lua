@@ -2,8 +2,7 @@ return {
 	settings = {
 		Lua = {
 			diagnostics = {
-        enable = false,
-				globals = { "vim" },
+        enable = true,
         ignoredFiles = "Opened",
         neededFileStatus = "Opened"
         --workspaceDelay = 6000,
