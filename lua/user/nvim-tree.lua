@@ -42,9 +42,18 @@ nvim_tree.setup {
         },
       },
     },
+    indent_markers = {
+      enable = false,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        item = "│ ",
+        none = "  ",
+      },
+    },
   },
   diagnostics = {
-    enable = true,
+    enable = false,
     show_on_dirs = false,
     icons = {
       hint = "",
@@ -57,6 +66,8 @@ nvim_tree.setup {
     width = 30,
     height = 30,
     side = "left",
+    number = true,
+    relativenumber = true,
     mappings = {
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },

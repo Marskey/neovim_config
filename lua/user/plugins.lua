@@ -45,7 +45,7 @@ return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
 	use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used by lots of plugins
 	use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
+	use( "numToStr/Comment.nvim" )
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
 	use("lunarvim/darkplus.nvim")
+  use("EdenEast/nightfox.nvim")
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" }) -- The completion plugin
@@ -107,8 +108,7 @@ return packer.startup(function(use)
   -- Exchange
   use( "tommcdo/vim-exchange" )
 
-  -- Smooth scroll
-  use( "karb94/neoscroll.nvim" )
+  -- document hightlight
   use('RRethy/vim-illuminate')
   use( "stevearc/aerial.nvim" )
   use({
@@ -116,7 +116,9 @@ return packer.startup(function(use)
     config = function() require("lsp_signature").setup() end
   })
 
-  use( "arkav/lualine-lsp-progress" )
+  use("j-hui/fidget.nvim")
+
+  -- use("rcarriga/nvim-notify")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -1,31 +1,26 @@
 return {
 	settings = {
-
 		Lua = {
 			diagnostics = {
+        enable = false,
 				globals = { "vim" },
-        ignoredFiles = "Disable",
+        ignoredFiles = "Opened",
+        neededFileStatus = "Opened"
         --workspaceDelay = 6000,
 			},
 			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-				},
+        useGitIgnore = true,
+        maxPreload = 5000,
+        checkThirdParty = true
 			},
       runtime = {
         version = 'lua 5.3',
         special = {
           include = "require",
           gSingleton = "require"
-        }
+        },
+        pathStrict = false
       },
-      hint = {
-        enable = true,
-      },
-      telemetry = {
-        enable = true
-      }
 		},
 	},
 }

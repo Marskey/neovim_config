@@ -62,22 +62,6 @@ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-local lsp_progress = {
-  "lsp_progress",
-  display_components = { 'lsp_client_name', 'spinner', {'title', 'percentage', 'message'} },
-  spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-  separators = {
-    component = '',
-    progress = '|',
-    percentage = { pre = '', post = '%% ' },
-    title = { pre = '', post = ': ' },
-    lsp_client_name = { pre = '[', post = ']' },
-    spinner = { pre = '', post = '' },
-    -- message = { commenced = 'In Progress', completed = 'Completed' },
-    timer = { progress_enddelay = 1, spinner = 500, lsp_client_name_enddelay = 2 },
-  }
-}
-
 lualine.setup({
 	options = {
 		icons_enabled = true,
@@ -88,13 +72,13 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
-		lualine_c = { lsp_progress },
+		lualine_a = { "mode" },
+		lualine_b = { branch, diagnostics },
+		lualine_c = { },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { "aerial", diff, spaces, "encoding", filetype },
-		lualine_y = { location },
-		lualine_z = { progress },
+		lualine_x = { "aerial", diff, "encoding", filetype },
+		lualine_y = { "location" },
+		lualine_z = { "progress" },
 	},
 	inactive_sections = {
 		lualine_a = {},

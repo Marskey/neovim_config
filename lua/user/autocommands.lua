@@ -1,11 +1,8 @@
 vim.cmd [[
-  augroup _general_settings
+augroup highlight_yank
     autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
-    autocmd BufWinEnter * :set formatoptions-=cro
-    autocmd FileType qf set nobuflisted
-  augroup end
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
+augroup END
 
   augroup _git
     autocmd!
@@ -34,4 +31,12 @@ vim.cmd [[
 -- augroup _lsp
 --   autocmd!
 --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
+-- augroup end
+
+-- augroup _general_settings
+--   autocmd!
+--   autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
+--   autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'IncSearch', timeout = 200}) 
+--   autocmd BufWinEnter * :set formatoptions-=cro
+--   autocmd FileType qf set nobuflisted
 -- augroup end

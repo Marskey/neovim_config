@@ -36,14 +36,26 @@ M.setup = function()
 	vim.diagnostic.config(config)
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-		width = 60,
+		border = "rounded"
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-		width = 60,
+		border = "rounded"
 	})
+
+  local location_handler = vim.lsp.handlers["textDocument/definition"]
+  vim.lsp.handlers["textDocument/definition"] = function (err, result, ctx, config)
+    if result == nil or vim.tbl_isempty(result) then
+      local posParam = vim.lsp.util.make_position_params()
+      if posParam.textDocument.uri == ctx.params.textDocument.uri
+        and posParam.position.character == ctx.params.position.character
+        and posParam.position.line == ctx.params.position.line then
+        vim.lsp.util.open_floating_preview({"No location found!"}, 'markdown', {border = "rounded", focus = false})
+      end
+      return nil
+    end
+    location_handler(err, result, ctx, config)
+  end
 end
 
 local function lsp_highlight_document(client)

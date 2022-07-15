@@ -5,5 +5,6 @@ end
 
 aerial.setup({
   backends = {"treesitter", "lsp", "markdown"},
-  close_behavior = "auto"
+  close_behavior = "auto",
+  show_guides = true,
 })
