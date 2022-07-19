@@ -97,7 +97,7 @@ M.on_attach = function(client, bufnr)
 	-- 	client.resolved_capabilities.document_formatting = false
 	-- end
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
+	-- lsp_highlight_document(client)
 
   require("aerial").on_attach(client, bufnr)
   require("lsp_signature").on_attach()

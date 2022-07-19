@@ -91,7 +91,7 @@ local mappings = {
     "Find files",
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["M"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["m"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   g = {
     name = "Git",
@@ -174,5 +174,38 @@ local mappings = {
   },
 }
 
+local v_opts = {
+  mode = "v", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+local v_mappings = {
+  ["f"] = {
+    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{ previewer = false, default_text = vim.getVisualSelection() })<cr>",
+    "Find files",
+  },
+  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy{ default_text = vim.getVisualSelection()})<cr>", "Find Text" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(v_mappings, v_opts)
+
+

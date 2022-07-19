@@ -5,6 +5,6 @@ end
 
 fidget.setup({
   text = {
-    spinner = "moon"
+    spinner = "circle_halves"
   }
 })
