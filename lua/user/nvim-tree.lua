@@ -43,7 +43,7 @@ nvim_tree.setup {
       },
     },
     indent_markers = {
-      enable = false,
+      enable = true,
       icons = {
         corner = "└ ",
         edge = "│ ",
@@ -63,7 +63,7 @@ nvim_tree.setup {
     },
   },
   view = {
-    width = 30,
+    width = 42,
     height = 30,
     side = "left",
     number = true,

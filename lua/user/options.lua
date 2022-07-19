@@ -16,7 +16,7 @@ local options = {
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
--- termguicolors = true,                    -- set term gui colors (most terminals support this)
+  termguicolors = true,                    -- set term gui colors (most terminals support this)
 --  timeoutlen = 100,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
 --  updatetime = 300,                        -- faster completion (4000ms default)
@@ -33,7 +33,7 @@ local options = {
   wrap = true,                            -- display lines as one long line
   foldmethod = "indent",
   foldlevelstart = 99,
-  guifont = "Hack Nerd Font",
+  guifont = "Hack Nerd Font:h13",
 }
 
 for k, v in pairs(options) do
@@ -43,3 +43,17 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 -- vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+-- vim.cmd [[let g:neovide_refresh_rate=120]]
+-- vim.cmd "let g:neovide_fullscreen = v:true"
+
+vim.cmd [[ 
+if exists("g:neovide")
+  let g:neovide_refresh_rate=30
+  let g:neovide_profiler=v:false 
+  let g:neovide_input_use_logo=v:true
+  let g:neovide_floating_opacity = 0.95
+  let g:neovide_floating_blur = 0
+  let g:neovide_cursor_antialiasing=v:false
+endif
+]]

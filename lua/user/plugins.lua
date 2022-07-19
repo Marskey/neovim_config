@@ -109,7 +109,7 @@ return packer.startup(function(use)
   use( "tommcdo/vim-exchange" )
 
   -- document hightlight
-  use('RRethy/vim-illuminate')
+  -- use('RRethy/vim-illuminate')
   use( "stevearc/aerial.nvim" )
   use({
     "ray-x/lsp_signature.nvim",
@@ -117,6 +117,8 @@ return packer.startup(function(use)
   })
 
   use("j-hui/fidget.nvim")
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- use("rcarriga/nvim-notify")
 

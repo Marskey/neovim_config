@@ -25,6 +25,17 @@ augroup END
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  " prevent press <c-r> to invoke a popup that cause telescope close it's window.
+  augroup telescope
+      autocmd!
+      autocmd FileType TelescopePrompt inoremap <buffer> <silent> <C-r> <C-r>
+  augroup END
+
+  augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi link illuminatedWord CursorLine
+  augroup END
 ]]
 
 -- Autoformat
