@@ -6,5 +6,8 @@ end
 fidget.setup({
   text = {
     spinner = "circle_halves"
+  },
+  timer = {
+    spinner_rate = 50,
   }
 })
