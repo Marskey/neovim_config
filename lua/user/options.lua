@@ -55,5 +55,6 @@ if exists("g:neovide")
   let g:neovide_floating_opacity = 0.95
   let g:neovide_floating_blur = 0
   let g:neovide_cursor_antialiasing=v:false
+  let g:neovide_hide_mouse_when_typing=1
 endif
 ]]
