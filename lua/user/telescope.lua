@@ -9,7 +9,9 @@ telescope.setup {
   defaults = {
 
     --prompt_prefix = " ",
-    selection_caret = " ",
+    -- selection_caret = " ",
+    selection_caret = " ",
+
    -- "hidden"    hide file names
    -- "tail"      only display the file name, and not the path
    -- "absolute"  display absolute paths
@@ -97,9 +99,13 @@ telescope.setup {
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
-    -- find_files = {
-    --   theme = "dropdown",
-    -- }
+    find_files = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    live_grep = {
+      theme = "ivy",
+    },
   },
   extensions = {
     -- Your extension configuration goes here:
