@@ -31,11 +31,6 @@ augroup END
       autocmd!
       autocmd FileType TelescopePrompt inoremap <buffer> <silent> <C-r> <C-r>
   augroup END
-
-  augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi link illuminatedWord CursorLine
-  augroup END
 ]]
 
 -- Autoformat

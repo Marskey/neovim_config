@@ -34,14 +34,10 @@ keymap("", "<leader>p", "\"+p", opts)
 keymap("", "<leader>Y", "\"+Y", opts)
 keymap("", "<leader>P", "\"+P", opts)
 
-keymap("i", "<C-f>", "<RIGHT>", opts)
-keymap("i", "<C-b>", "<LEFT>", opts)
+-- keymap("i", "<C-f>", "<RIGHT>", opts)
+-- keymap("i", "<C-b>", "<LEFT>", opts)
 
-
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
+if vim.g.neovide == true then
+    keymap('', '<C-D-f>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", opts)
+    keymap('i', '<D-v>', "<C-R>+", opts)
+end

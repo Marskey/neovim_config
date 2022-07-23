@@ -8,3 +8,5 @@ aerial.setup({
   close_behavior = "auto",
   show_guides = true,
 })
+
+require("telescope").load_extension('aerial')
