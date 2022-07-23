@@ -87,10 +87,10 @@ local mappings = {
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files()<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["F"] = { "<cmd>Telescope live_grep <cr>", "Find Text" },
   ["m"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   g = {
@@ -198,10 +198,10 @@ end
 
 local v_mappings = {
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{ previewer = false, default_text = vim.getVisualSelection() })<cr>",
+    "<cmd>lua require('telescope.builtin').find_files({ default_text = vim.getVisualSelection() })<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy{ default_text = vim.getVisualSelection()})<cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep({ default_text = vim.getVisualSelection()})<cr>", "Find Text" },
 }
 
 which_key.setup(setup)
