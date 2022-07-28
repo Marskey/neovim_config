@@ -62,6 +62,10 @@ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+local current_working_directory = function ()
+  return string.match(vim.loop.cwd(), "/(%w+)$")
+end
+
 lualine.setup({
 	options = {
 		icons_enabled = true,
@@ -74,7 +78,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { branch, diagnostics },
-		lualine_c = { },
+		lualine_c = { current_working_directory },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { "aerial", diff, "encoding", filetype },
 		lualine_y = { "location" },
