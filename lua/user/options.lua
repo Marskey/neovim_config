@@ -49,18 +49,17 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 if vim.g.neovide == true then
     local g_options = {
-        neovide_refresh_rate=30,
+        neovide_refresh_rate=60,
         neovide_profiler=false,
         neovide_input_use_logo=true,
         neovide_floating_opacity = 1,
         neovide_floating_blur = 0,
         neovide_cursor_antialiasing=false,
         neovide_hide_mouse_when_typing=1,
+        neovide_cursor_animation_length=0.02
     }
 
     for k, v in pairs(g_options) do
         vim.g[k] = v
     end
-
-    vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
 end

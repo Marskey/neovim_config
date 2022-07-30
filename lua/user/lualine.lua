@@ -63,7 +63,7 @@ local spaces = function()
 end
 
 local current_working_directory = function ()
-  return string.match(vim.loop.cwd(), "/(%w+)$")
+  return string.match(vim.loop.cwd(), "/([^/]+)$")
 end
 
 lualine.setup({
@@ -86,7 +86,7 @@ lualine.setup({
 	},
 	inactive_sections = {
 		lualine_a = {},
-		lualine_b = {},
+		lualine_b = { current_working_directory },
 		lualine_c = { "filename" },
 		lualine_x = { "location" },
 		lualine_y = {},

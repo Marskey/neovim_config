@@ -102,9 +102,11 @@ telescope.setup {
     find_files = {
       theme = "dropdown",
       previewer = false,
+      layout_config = { width = 0.6 }
     },
     live_grep = {
-      theme = "ivy",
+      -- theme = "dropdown",
+      -- layout_config = { width = 0.7 }
     },
   },
   extensions = {
