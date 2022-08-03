@@ -105,8 +105,11 @@ telescope.setup {
       layout_config = { width = 0.6 }
     },
     live_grep = {
-      -- theme = "dropdown",
-      -- layout_config = { width = 0.7 }
+      theme = "dropdown",
+      layout_config = {
+                width = 0.7,
+                -- height = 0.5
+            }
     },
   },
   extensions = {

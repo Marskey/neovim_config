@@ -1,5 +1,5 @@
 local groups = {
-  nordfox = {
+    all = {
         NormalFloat = {link = "Normal"},
         WhichKeyFloat = {link = "Normal"}
     }
@@ -10,8 +10,8 @@ require("nightfox").setup({ groups = groups })
 vim.cmd [[
 try
   colorscheme nordfox
+  set background=dark
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
-  set background=dark
 endtry
 ]]
