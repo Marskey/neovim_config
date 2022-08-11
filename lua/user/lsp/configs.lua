@@ -6,25 +6,33 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "clangd" }
-
 lsp_installer.setup({
-	ensure_installed = servers,
+	ensure_installed = { "jsonls", "sumneko_lua", "clangd" },
 })
 
-for _, server in pairs(servers) do
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
 	local opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
-  if server == "sumneko_lua" then
+  if server.name == "sumneko_lua" then
     opts.root_dir = lspconfig.util.root_pattern(".luarc.json", ".git")
   end
 
-	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
+	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server.name)
 	if has_custom_opts then
 		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
 	end
-	lspconfig[server].setup(opts)
+	lspconfig[server.name].setup(opts)
 end
+
+local win = require('lspconfig.ui.windows')
+local _default_opts = win.default_opts
+
+win.default_opts = function(options)
+  local opts = _default_opts(options)
+  opts.border = 'single'
+  return opts
+end
+
