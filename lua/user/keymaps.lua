@@ -20,14 +20,14 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- keymap("n", "<C-h>", "<C-w>h", opts)
+-- keymap("n", "<C-j>", "<C-w>j", opts)
+-- keymap("n", "<C-k>", "<C-w>k", opts)
+-- keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<C-l>", ":bnext<CR>", opts)
+keymap("n", "<C-h>", ":bprevious<CR>", opts)
 
 keymap("", "<leader>y", "\"+y", opts)
 keymap("", "<leader>p", "\"+p", opts)
@@ -39,5 +39,9 @@ keymap("", "<leader>P", "\"+P", opts)
 
 if vim.g.neovide == true then
     keymap('', '<C-D-f>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", opts)
+    keymap('i', '<D-v>', "<C-R>+", opts)
+end
+
+if vim.env.NVIM_GUI == "1" then
     keymap('i', '<D-v>', "<C-R>+", opts)
 end

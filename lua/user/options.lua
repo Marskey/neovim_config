@@ -33,7 +33,7 @@ local options = {
   wrap = true,                            -- display lines as one long line
   foldmethod = "indent",
   foldlevelstart = 99,
-  guifont = "Hack Nerd Font",
+  guifont = "Hack Nerd Font:h15",
 }
 
 for k, v in pairs(options) do

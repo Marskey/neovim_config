@@ -36,6 +36,9 @@ function _G.set_terminal_keymaps()
   if vim.g.neovide == true then
     vim.api.nvim_buf_set_keymap(0, 't', '<D-v>', [[<C-\><C-n>"+pi]], opts)
   end
+  if vim.env.NVIM_GUI == "1" then
+    vim.api.nvim_buf_set_keymap(0, 't', '<D-v>', [[<C-\><C-n>"+pi]], opts)
+  end
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
