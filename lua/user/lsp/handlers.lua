@@ -43,19 +43,55 @@ M.setup = function()
 		border = "rounded"
 	})
 
-  local location_handler = vim.lsp.handlers["textDocument/definition"]
-  vim.lsp.handlers["textDocument/definition"] = function (err, result, ctx, config)
-    if result == nil or vim.tbl_isempty(result) then
-      local posParam = vim.lsp.util.make_position_params()
-      if posParam.textDocument.uri == ctx.params.textDocument.uri
-        and posParam.position.character == ctx.params.position.character
-        and posParam.position.line == ctx.params.position.line then
-        vim.lsp.util.open_floating_preview({"No location found!"}, 'markdown', {border = "rounded", focus = false})
-      end
-      return nil
+    local location_handler = function (err, result, ctx, config)
+        if result == nil or vim.tbl_isempty(result) then
+            local posParam = vim.lsp.util.make_position_params()
+            if posParam.textDocument.uri == ctx.params.textDocument.uri
+                and posParam.position.character == ctx.params.position.character
+                and posParam.position.line == ctx.params.position.line then
+                vim.lsp.util.open_floating_preview({"No location found!"}, 'markdown', {border = "rounded", focus = false})
+            end
+            return nil
+        end
+
+        local client = vim.lsp.get_client_by_id(ctx.client_id)
+
+        config = config or {}
+
+        if vim.tbl_islist(result) then
+            local title = 'LSP locations'
+            local items = vim.lsp.util.locations_to_items(result, client.offset_encoding)
+
+            if config.on_list then
+                assert(type(config.on_list) == 'function', 'on_list is not a function')
+                config.on_list({ title = title, items = items })
+            else
+                if #result == 1 then
+                    vim.lsp.util.jump_to_location(result[1], client.offset_encoding, config.reuse_win)
+                    return
+                end
+                vim.fn.setqflist({}, ' ', { title = title, items = items })
+                vim.api.nvim_command('botright copen')
+            end
+        else
+            vim.lsp.util.jump_to_location(result, client.offset_encoding, config.reuse_win)
+        end
     end
-    location_handler(err, result, ctx, config)
-  end
+
+    vim.lsp.handlers["textDocument/definition"] = location_handler
+  --   vim.lsp.handlers["textDocument/definition"] = function (err, result, ctx, config)
+  --   if result == nil or vim.tbl_isempty(result) then
+  --     local posParam = vim.lsp.util.make_position_params()
+  --     if posParam.textDocument.uri == ctx.params.textDocument.uri
+  --       and posParam.position.character == ctx.params.position.character
+  --       and posParam.position.line == ctx.params.position.line then
+  --       vim.lsp.util.open_floating_preview({"No location found!"}, 'markdown', {border = "rounded", focus = false})
+  --     end
+  --     return nil
+  --   end
+  --
+  --   location_handler(err, result, ctx, config)
+  -- end
 end
 
 local function lsp_highlight_document(client)
