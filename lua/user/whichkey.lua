@@ -80,19 +80,18 @@ local opts = {
 
 local mappings = {
   ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, sort_mru = true, ignore_current_buffer = true })<cr>",
     "Buffers",
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["c"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files()<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>Telescope live_grep <cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require'telescope.builtin'.live_grep({only_sort_text=true, additional_args = function(opts) return { \"--pcre2\" } end }) <cr>", "Find Text" },
   ["m"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -201,7 +200,7 @@ local v_mappings = {
     "<cmd>lua require('telescope.builtin').find_files({ default_text = vim.getVisualSelection() })<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep({ default_text = vim.getVisualSelection()})<cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep({ default_text = vim.getVisualSelection(), only_sort_text=true, additional_args = function(opts) return { \"--pcre2\" } end })<cr>", "Find Text" },
 }
 
 which_key.setup(setup)

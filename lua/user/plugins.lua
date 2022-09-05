@@ -59,7 +59,7 @@ return packer.startup(function(use)
     use({ "akinsho/toggleterm.nvim" })
     use({ "ahmedkhalf/project.nvim" })
     use({ "lewis6991/impatient.nvim" })
-    -- use({ "lukas-reineke/indent-blankline.nvim" })
+    use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "goolord/alpha-nvim" })
     use( "folke/which-key.nvim" )
 
@@ -116,8 +116,6 @@ return packer.startup(function(use)
         "ray-x/lsp_signature.nvim",
         config = function() require("lsp_signature").setup() end
     })
-
-    use("j-hui/fidget.nvim")
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 

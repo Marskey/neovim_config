@@ -33,6 +33,7 @@ keymap("", "<leader>y", "\"+y", opts)
 keymap("", "<leader>p", "\"+p", opts)
 keymap("", "<leader>Y", "\"+Y", opts)
 keymap("", "<leader>P", "\"+P", opts)
+keymap("n", "*", ":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>", opts)
 
 -- keymap("i", "<C-f>", "<RIGHT>", opts)
 -- keymap("i", "<C-b>", "<LEFT>", opts)

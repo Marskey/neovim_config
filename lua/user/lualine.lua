@@ -48,16 +48,6 @@ local location = {
 	padding = 0,
 }
 
--- cool function for progress
-local progress = function()
-	local current_line = vim.fn.line(".")
-	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-	local line_ratio = current_line / total_lines
-	local index = math.ceil(line_ratio * #chars)
-	return chars[index]
-end
-
 local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
@@ -65,6 +55,11 @@ end
 local current_working_directory = function ()
   return string.match(vim.loop.cwd(), "/([^/]+)$")
 end
+
+local aerial = {
+    "aerial",
+    depth = 1,
+}
 
 lualine.setup({
 	options = {
@@ -80,7 +75,8 @@ lualine.setup({
 		lualine_b = { branch, diagnostics },
 		lualine_c = { current_working_directory },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { "aerial", diff, "encoding", filetype },
+		lualine_x = { aerial, diff, "encoding", filetype },
+		-- lualine_x = { "encoding", filetype },
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},
