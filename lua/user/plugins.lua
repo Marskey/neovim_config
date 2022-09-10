@@ -46,20 +46,30 @@ return packer.startup(function(use)
     use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
     use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
     use( "numToStr/Comment.nvim" )
+    -- use {
+    --     'kyazdani42/nvim-tree.lua',
+    --     requires = {
+    --         'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    --     },
+    --     tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    -- }
     use {
-        'kyazdani42/nvim-tree.lua',
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
     }
+
     use({ "akinsho/bufferline.nvim" })
     use({ "moll/vim-bbye" })
     use({ "nvim-lualine/lualine.nvim" })
     use({ "akinsho/toggleterm.nvim" })
     use({ "ahmedkhalf/project.nvim" })
     use({ "lewis6991/impatient.nvim" })
-    use({ "lukas-reineke/indent-blankline.nvim" })
+    -- use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "goolord/alpha-nvim" })
     use( "folke/which-key.nvim" )
 
@@ -112,11 +122,7 @@ return packer.startup(function(use)
     -- document hightlight
     -- use('RRethy/vim-illuminate')
     use( "stevearc/aerial.nvim" )
-    use({
-        "ray-x/lsp_signature.nvim",
-        config = function() require("lsp_signature").setup() end
-    })
-
+    use({ "ray-x/lsp_signature.nvim", })
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- use("rcarriga/nvim-notify")

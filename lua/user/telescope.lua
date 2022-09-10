@@ -107,9 +107,15 @@ telescope.setup {
     live_grep = {
       theme = "dropdown",
       layout_config = {
-                width = 0.7,
+                width = 0.9,
                 -- height = 0.5
             }
+    },
+    buffers = {
+      theme = "dropdown",
+      previewer = false,
+      sort_mru = true,
+      ignore_current_buffer = true
     },
   },
   extensions = {

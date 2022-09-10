@@ -6,7 +6,7 @@ return {
                 globals = {"vim"},
                 ignoredFiles = "Opened",
                 neededFileStatus = "Opened",
-                workspaceDelay = 6000,
+                -- workspaceDelay = 6000,
             },
             workspace = {
                 useGitIgnore = true,
