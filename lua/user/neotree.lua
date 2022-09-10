@@ -12,7 +12,6 @@ end
 local uv = vim.loop
 
 local commands = { cmd = {}, args = {} }
-
 if vim.fn.has "win32" == 1 or vim.fn.has "win32unix" == 1 then
     commands = {
         cmd = "cmd",
