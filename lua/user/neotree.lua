@@ -96,11 +96,14 @@ neotree.setup({
                 nowait = true,
             },
             mappings = {
+                ["<space>"] = "",
                 ["o"] = { "toggle_node" },
                 ["y"] = "copy_file_name",
                 ["Y"] = "copy_path",
                 ["gy"] = "copy_absolute_path",
-                ["go"] = "reveal_in_explorer"
+                ["go"] = "reveal_in_explorer",
+                ["C"] = "copy",
+                ["c"] = "close_node",
             }
         }
     }
