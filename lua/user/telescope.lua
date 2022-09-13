@@ -4,51 +4,9 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
-local action_history = require "telescope.actions.history"
-local utils = require "telescope.utils"
-local action_state = require "telescope.actions.state"
-actions.cycle_history_next = function(prompt_bufnr)
-  local history = action_state.get_current_history()
-  local current_picker = action_state.get_current_picker(prompt_bufnr)
-  local line = action_state.get_current_line()
-
-  local entry = history:get_next(line, current_picker)
-  if entry == false then
-    return
-  end
-
-  if entry ~= nil then
-    current_picker:reset_prompt()
-    current_picker:set_prompt(entry)
-  end
-end
--- local history = action_history.History
--- function history:get_next(line, picker)
---     if not self.enabled then
---         utils.notify("History:get_next", {
---             msg = "You are cycling to next the history item but history is disabled. Read ':help telescope.defaults.history'",
---             level = "WARN",
---         })
---         return false
---     end
---     if self._pre_get then
---         self._pre_get(self, line, picker)
---     end
---
---     local next_idx = self.index + 1
---     if next_idx <= #self.content then
---         self.index = next_idx
---         return self.content[next_idx]
---     end
---     self.index = #self.content + 1
---     return false
--- end
 
 telescope.setup {
     defaults = {
-
-        --prompt_prefix = " ",
-        -- selection_caret = " ",
         selection_caret = " ",
 
         -- "hidden"    hide file names
