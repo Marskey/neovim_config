@@ -104,7 +104,8 @@ neotree.setup({
                 ["go"] = "reveal_in_explorer",
                 ["C"] = "copy",
                 ["zR"] = "expand_all_nodes",
-                ["zM"] = "close_node",
+                ["zm"] = "close_node",
+                ["zM"] = "close_all_nodes",
                 ["z"] = "",
             }
         }

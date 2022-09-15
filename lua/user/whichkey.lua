@@ -83,8 +83,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers()<cr>",
     "Buffers",
   },
-  -- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["e"] = { "<cmd>Neotree reveal toggle<cr>", "Explorer" },
+  ["e"] = { "<cmd>Neotree reveal toggle<cr>", "Toggle Explorer" },
   ["c"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
