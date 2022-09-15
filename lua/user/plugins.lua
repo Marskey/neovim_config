@@ -3,16 +3,16 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+    PACKER_BOOTSTRAP = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
+    print("Installing packer close and reopen Neovim...")
+    vim.cmd([[packadd packer.nvim]])
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -26,16 +26,16 @@ end
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+    return
 end
 
 -- Have packer use a popup window
 packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+    display = {
+        open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+        end,
+    },
 })
 
 -- Install your plugins here
@@ -45,30 +45,33 @@ return packer.startup(function(use)
     use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
     use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
     use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
-    use( "numToStr/Comment.nvim" )
+    use("numToStr/Comment.nvim")
     use {
-        'kyazdani42/nvim-tree.lua',
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
     }
+
     use({ "akinsho/bufferline.nvim" })
     use({ "moll/vim-bbye" })
     use({ "nvim-lualine/lualine.nvim" })
     use({ "akinsho/toggleterm.nvim" })
     use({ "ahmedkhalf/project.nvim" })
     use({ "lewis6991/impatient.nvim" })
-    use({ "lukas-reineke/indent-blankline.nvim" })
+    -- use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "goolord/alpha-nvim" })
-    use( "folke/which-key.nvim" )
+    use("folke/which-key.nvim")
 
     -- Colorschemes
-    use({ "folke/tokyonight.nvim"})
+    use({ "folke/tokyonight.nvim" })
     use("lunarvim/darkplus.nvim")
     use("EdenEast/nightfox.nvim")
     use("shaunsingh/solarized.nvim")
-    use("rakr/vim-one")
+    use("olimorris/onedarkpro.nvim")
 
     -- cmp plugins
     use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -98,26 +101,22 @@ return packer.startup(function(use)
     use({ "lewis6991/gitsigns.nvim" })
 
     -- EasyMotion
-    use( "easymotion/vim-easymotion" )
+    use("easymotion/vim-easymotion")
 
     -- Surround
-    use( "tpope/vim-surround" )
+    use("tpope/vim-surround")
 
     -- ReplaceWithRegister
-    use( "vim-scripts/ReplaceWithRegister")
+    use("vim-scripts/ReplaceWithRegister")
 
     -- Exchange
-    use( "tommcdo/vim-exchange" )
+    use("tommcdo/vim-exchange")
 
     -- document hightlight
     -- use('RRethy/vim-illuminate')
-    use( "stevearc/aerial.nvim" )
-    use({
-        "ray-x/lsp_signature.nvim",
-        config = function() require("lsp_signature").setup() end
-    })
-
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use("stevearc/aerial.nvim")
+    use({ "ray-x/lsp_signature.nvim", })
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- use("rcarriga/nvim-notify")
 
