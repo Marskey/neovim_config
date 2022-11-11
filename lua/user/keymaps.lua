@@ -36,11 +36,10 @@ keymap("n", "*", ":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>"
 -- keymap("i", "<C-f>", "<RIGHT>", opts)
 -- keymap("i", "<C-b>", "<LEFT>", opts)
 
-if vim.g.neovide == true then
-    keymap('', '<C-D-f>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", opts)
+if not vim.env.ITERM then
     keymap('i', '<D-v>', "<C-R>+", opts)
-end
 
-if vim.env.NVIM_GUI == "1" then
-    keymap('i', '<D-v>', "<C-R>+", opts)
+    if vim.g.neovide == true then
+        keymap('', '<C-D-f>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", opts)
+    end
 end

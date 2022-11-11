@@ -13,7 +13,7 @@ luasnip.config.setup({
     delete_check_events = "TextChanged,InsertEnter",
 })
 
-require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1

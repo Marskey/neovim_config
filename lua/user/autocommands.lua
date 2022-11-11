@@ -30,6 +30,8 @@ augroup END
   augroup telescope
       autocmd!
       autocmd FileType TelescopePrompt inoremap <buffer> <silent> <C-r> <C-r>
+      autocmd User TelescopePreviewerLoaded setlocal number
+      autocmd User TelescopePreviewerLoaded setlocal wrap
   augroup END
 ]]
 

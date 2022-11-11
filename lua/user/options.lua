@@ -48,21 +48,23 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 -- vim.cmd [[let g:neovide_refresh_rate=120]]
 -- vim.cmd "let g:neovide_fullscreen = v:true"
 
-if vim.g.neovide == true then
-    local g_options = {
-        neovide_no_idle = true,
-        neovide_refresh_rate = 60,
-        neovide_fullscreen = false,
-        neovide_profiler = false,
-        neovide_floating_opacity = 1,
-        neovide_floating_blur = 0,
-        neovide_cursor_antialiasing = false,
-        neovide_hide_mouse_when_typing = 1,
-        -- neovide_cursor_trail_size=0.1,
-        neovide_cursor_animation_length = 0,
-    }
+if not vim.env.ITERM then
+    if vim.g.neovide == true then
+        local g_options = {
+            neovide_no_idle = true,
+            neovide_refresh_rate = 60,
+            neovide_fullscreen = false,
+            neovide_profiler = false,
+            neovide_floating_opacity = 1,
+            neovide_floating_blur = 0,
+            neovide_cursor_antialiasing = false,
+            neovide_hide_mouse_when_typing = 1,
+            -- neovide_cursor_trail_size=0.1,
+            neovide_cursor_animation_length = 0,
+        }
 
-    for k, v in pairs(g_options) do
-        vim.g[k] = v
+        for k, v in pairs(g_options) do
+            vim.g[k] = v
+        end
     end
 end
