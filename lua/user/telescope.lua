@@ -87,6 +87,9 @@ telescope.setup {
                 ["?"] = actions.which_key,
             },
         },
+        cache_picker = {
+            num_pickers = 1,
+        }
     },
     pickers = {
         -- Default configuration for builtin pickers goes here:
@@ -97,22 +100,38 @@ telescope.setup {
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
         find_files = {
-            theme = "dropdown",
+            layout_strategy = 'center',
             previewer = false,
-            layout_config = { width = 0.6 }
+            layout_config = { width = 0.6 },
+            scroll_strategy = 'limit',
+            sorting_strategy = 'ascending',
         },
         live_grep = {
-            theme = "dropdown",
+            layout_strategy = 'center',
             layout_config = {
                 width = 0.9,
                 -- height = 0.5
-            }
+            },
+            scroll_strategy = 'limit',
+            sorting_strategy = 'ascending',
         },
         buffers = {
-            theme = "dropdown",
+            layout_strategy = 'center',
             previewer = false,
             sort_mru = true,
-            ignore_current_buffer = true
+            ignore_current_buffer = true,
+            scroll_strategy = 'limit',
+            layout_config = { width = 0.6 },
+            sorting_strategy = 'ascending',
+        },
+        pickers = {
+            layout_strategy = 'center',
+            layout_config = {
+                width = 0.9,
+                -- height = 0.5
+            },
+            scroll_strategy = 'limit',
+            sorting_strategy = 'ascending',
         },
     },
     extensions = {

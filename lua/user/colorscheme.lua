@@ -1,7 +1,12 @@
 local groups = {
     NormalFloat = { link = "Normal" },
     WhichKeyFloat = { link = "Normal" },
-    NeoTreeTitleBar = { link = "TermCursor" }
+    NeoTreeTitleBar = { link = "TermCursor" },
+
+    DiffText = { link = "lualine_a_command" },
+    -- DiffChange = { link = "lualine_b_command" },
+    -- DiffAdd = { link = "Substitute" },
+    -- DiffDelete = { link = "Substitute" },
 }
 
 local nigtfox = require("nightfox")

@@ -94,6 +94,8 @@ local mappings = {
         },
         ["g"] = { "<cmd>lua require'telescope.builtin'.live_grep({only_sort_text=true, additional_args = function(opts) return { \"--pcre2\" } end }) <cr>",
             "Find Text" },
+        ["r"] = { "<cmd>lua require'telescope.builtin'.resume() <cr>",
+            "Resume last find" },
     },
     ["m"] = { "<cmd>Telescope projects<cr>", "Projects" },
     g = {

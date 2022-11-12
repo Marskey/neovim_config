@@ -118,6 +118,8 @@ return packer.startup(function(use)
     use({ "ray-x/lsp_signature.nvim", })
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+    use("rickhowe/spotdiff.vim")
+    use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
     -- use("rcarriga/nvim-notify")
 
     -- Automatically set up your configuration after cloning packer.nvim
