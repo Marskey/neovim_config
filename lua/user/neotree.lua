@@ -103,6 +103,7 @@ neotree.setup({
                 ["gy"] = "copy_absolute_path",
                 ["go"] = "reveal_in_explorer",
                 ["C"] = "copy",
+                ["c"] = "copy_to_clipboard",
                 ["zR"] = "expand_all_nodes",
                 ["zm"] = "close_node",
                 ["zM"] = "close_all_nodes",
