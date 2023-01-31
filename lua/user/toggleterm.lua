@@ -8,6 +8,7 @@ toggleterm.setup({
     open_mapping = [[<c-\>]],
     hide_numbers = true,
     shade_filetypes = {},
+    autochdir = true,
     -- shade_terminals = true,
     -- shading_factor = 2,
     start_in_insert = true,
@@ -36,6 +37,10 @@ function _G.set_terminal_keymaps()
     if not vim.env.ITERM then
         vim.api.nvim_buf_set_keymap(0, 't', '<D-v>', [[<C-\><C-n>"+pa]], opts)
     end
+
+    if vim.fn.mapcheck("<esc>", "t") ~= "" then
+        vim.api.nvim_buf_del_keymap(0, "t", "<esc>")
+    end
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
@@ -49,10 +54,7 @@ function _LAZYGIT_TOGGLE()
         direction = "float",
         on_open = function(term)
             vim.cmd("startinsert!")
-            vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
-            if vim.fn.mapcheck("<esc>", "t") ~= "" then
-                vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
-            end
+            -- vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
         end,
     })
     lazygit:toggle()

@@ -7,7 +7,16 @@ local actions = require "telescope.actions"
 
 telescope.setup {
     defaults = {
-        selection_caret = " ",
+        preview = {
+            filesize_hook = function(filepath, bufnr, opts)
+                local max_bytes = 10000
+                local cmd = { "head", "-c", max_bytes, filepath }
+                require('telescope.previewers.utils').job_maker(cmd, bufnr, opts)
+            end
+        },
+        prompt_prefix = "   ",
+        selection_caret = "  ",
+        -- selection_caret = " ",
 
         -- "hidden"    hide file names
         -- "tail"      only display the file name, and not the path
@@ -100,34 +109,44 @@ telescope.setup {
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
         find_files = {
-            layout_strategy = 'center',
+            layout_strategy = 'vertical',
             previewer = false,
-            layout_config = { width = 0.6 },
+            layout_config = {
+                width = 0.6,
+                height = 0.65,
+                prompt_position = "top",
+            },
             scroll_strategy = 'limit',
             sorting_strategy = 'ascending',
         },
         live_grep = {
-            layout_strategy = 'center',
+            layout_strategy = 'vertical',
             layout_config = {
-                width = 0.9,
-                -- height = 0.5
+                width = 0.85,
+                height = 0.85,
+                preview_height = 0.4,
+                prompt_position = "top",
             },
             scroll_strategy = 'limit',
             sorting_strategy = 'ascending',
         },
         buffers = {
-            layout_strategy = 'center',
+            layout_strategy = 'vertical',
             previewer = false,
+            layout_config = {
+                width = 0.6,
+                height = 0.65,
+                prompt_position = "top",
+            },
             sort_mru = true,
             ignore_current_buffer = true,
             scroll_strategy = 'limit',
-            layout_config = { width = 0.6 },
             sorting_strategy = 'ascending',
         },
         pickers = {
             layout_strategy = 'center',
             layout_config = {
-                width = 0.9,
+                width = 0.8,
                 -- height = 0.5
             },
             scroll_strategy = 'limit',

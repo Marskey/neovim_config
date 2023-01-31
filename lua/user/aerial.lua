@@ -7,8 +7,10 @@ aerial.setup({
     backends = { "treesitter", "lsp", "markdown" },
     layout = {
         min_width = 50,
+        placement = "edge",
     },
     -- close_behavior = "auto",
+    attach_mode = "global",
     close_on_select = true,
     show_guides = true,
 })

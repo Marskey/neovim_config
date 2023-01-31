@@ -120,6 +120,7 @@ return packer.startup(function(use)
 
     use("rickhowe/spotdiff.vim")
     use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
+    use("stevearc/stickybuf.nvim")
     -- use("rcarriga/nvim-notify")
 
     -- Automatically set up your configuration after cloning packer.nvim

@@ -34,7 +34,7 @@ local options = {
     wrap = true, -- display lines as one long line
     foldmethod = "indent",
     foldlevelstart = 99,
-    guifont = "Hack Nerd Font:h12",
+    guifont = "Hack Nerd Font:h13",
     -- guifont = "JetBrainsMono Nerd Font:h15",
 }
 
@@ -46,22 +46,19 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 -- vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
--- vim.cmd [[let g:neovide_refresh_rate=120]]
--- vim.cmd "let g:neovide_fullscreen = v:true"
-
 if not vim.env.ITERM then
     if vim.g.neovide == true then
         local g_options = {
-            neovide_no_idle = true,
-            neovide_refresh_rate = 60,
+            -- neovide_no_idle = true,
+            -- neovide_refresh_rate = 60,
             neovide_fullscreen = false,
             neovide_profiler = false,
             neovide_floating_opacity = 1,
             neovide_floating_blur = 0,
-            neovide_cursor_antialiasing = false,
+            -- neovide_cursor_antialiasing = false,
             neovide_hide_mouse_when_typing = 1,
             -- neovide_cursor_trail_size=0.1,
-            neovide_cursor_animation_length = 0,
+            -- neovide_cursor_animation_length = 0,
         }
 
         for k, v in pairs(g_options) do

@@ -1,3 +1,4 @@
+local palettes = require('nightfox.palette').load('nordfox')
 local groups = {
     NormalFloat = { link = "Normal" },
     WhichKeyFloat = { link = "Normal" },
@@ -7,6 +8,20 @@ local groups = {
     -- DiffChange = { link = "lualine_b_command" },
     -- DiffAdd = { link = "Substitute" },
     -- DiffDelete = { link = "Substitute" },
+
+    -- Telescope
+    TelescopeBorder = { bg = palettes.bg0, fg = palettes.bg0 },
+    TelescopePromptBorder = { bg = palettes.black.dim, fg = palettes.black.dim },
+    TelescopePromptNormal = { bg = palettes.black.dim, fg = palettes.white.base, },
+    TelescopePromptPrefix = { bg = palettes.black.dim, fg = palettes.red.base },
+
+    TelescopeNormal = { bg = palettes.bg0 },
+
+    TelescopePreviewTitle = { bg = palettes.green.base, fg = palettes.black.base },
+    TelescopePromptTitle = { bg = palettes.red.base, fg = palettes.black.base },
+    TelescopeResultsTitle = { bg = palettes.bg0, fg = palettes.bg0 },
+
+    TelescopeSelection = { bg = palettes.bg3 }
 }
 
 local nigtfox = require("nightfox")

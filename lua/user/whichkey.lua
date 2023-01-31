@@ -84,6 +84,7 @@ local mappings = {
         "Buffers",
     },
     ["e"] = { "<cmd>Neotree reveal toggle<cr>", "Toggle Explorer" },
+    ["a"] = { "<cmd>Neotree reveal<cr>", "Reveal file in Explorer" },
     ["c"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     f = {
@@ -98,6 +99,7 @@ local mappings = {
             "Resume last find" },
     },
     ["m"] = { "<cmd>Telescope projects<cr>", "Projects" },
+    ["j"] = { "<cmd>lua require'telescope.builtin'.jumplist() <cr>", "Jump List"},
     g = {
         name = "Git",
         g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
